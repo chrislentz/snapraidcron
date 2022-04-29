@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: '1.18'
+    volumes:
+      - ..:/workspace:cached
+      - bash_history:/commandhistory
+    command: sleep infinity
+
+volumes:
+  bash_history:

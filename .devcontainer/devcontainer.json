@@ -1,0 +1,19 @@
+{
+	"name": "Snapraid Cron",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "main",
+	"workspaceFolder": "/workspace",
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"terminal.integrated.cursorBlinking": true,
+		"go.toolsManagement.checkForUpdates": "local",
+		"go.useLanguageServer": true,
+		"go.gopath": "/go",
+		"go.goroot": "/usr/local/go",
+	},
+	"extensions": [
+		"golang.Go",
+		"mikestead.dotenv"
+	],
+	"remoteUser": "vscode"
+}
