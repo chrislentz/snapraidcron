@@ -1,6 +1,7 @@
 ### Custom ###
 *.sh
 snapraidcron
+config.yaml
 
 # Created by https://www.toptal.com/developers/gitignore/api/go,git,macos,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=go,git,macos,windows,visualstudiocode

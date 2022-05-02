@@ -2,4 +2,4 @@ module github.com/chrislentz/snapraidcron
 
 go 1.18
 
-require github.com/joho/godotenv v1.4.0
+require gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect

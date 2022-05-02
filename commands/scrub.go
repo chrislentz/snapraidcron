@@ -9,7 +9,7 @@ import (
 	"github.com/chrislentz/snapraidcron/utilities"
 )
 
-func Scrub() string {
+func Scrub(snapraidBin string) string {
 	output := "\n"
 
 	output = utilities.AppendLabelToOutput(output, "START: SCRUB Command")

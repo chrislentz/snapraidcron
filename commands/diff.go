@@ -9,7 +9,7 @@ import (
 	"github.com/chrislentz/snapraidcron/utilities"
 )
 
-func Diff() (string, bool) {
+func Diff(snapraidBin string) (string, bool) {
 	output := ""
 	diffDetected := false
 

@@ -9,7 +9,7 @@ import (
 	"github.com/chrislentz/snapraidcron/utilities"
 )
 
-func Sync() (string, bool) {
+func Sync(snapraidBin string) (string, bool) {
 	output := "\n"
 	dataSynced := false
 

@@ -1,0 +1,23 @@
+# Defines the location of the snapraid binary.
+snapraid_bin: /usr/local/bin/snapraid
+
+# Defines the SMTP settings needed to send an email message.
+smtp:
+  # Defines the SMTP servers host. (e.g. smtp.postmarkapp.com)
+  host: smtp.example.com
+
+  # Defines the SMTP servers port. (e.g. 25, 587, or 2525)
+  port: 587
+
+  # Defines the SMTP servers username.
+  username: example-username
+
+  # Defines the SMTP servers password.
+  password: example-password
+
+  # Defines the email address where the SMTP email will be sent.
+  # If sending to multiple email addresses, use a comma seperated list.
+  to: to@example.com
+
+  # Defines the email address the email is being sent from.
+  from: from@example.com
