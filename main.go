@@ -49,6 +49,14 @@ func main() {
 	scrubOutput = commands.Scrub(config.SnapraidBin)
 	output = output + scrubOutput
 
-	// Print the output
-	fmt.Println(output)
+	// SMTP Email
+	var subject string
+
+	if dataSynced {
+		subject = "SnapRAID Cron - Sync Completed Successfully"
+	} else {
+		subject = "SnapRAID Cron - Nothing Synced"
+	}
+
+	utilities.SendSmtp(config.Smtp.Host, config.Smtp.Port, config.Smtp.Username, config.Smtp.Password, config.Smtp.To, config.Smtp.From, subject, output)
 }
