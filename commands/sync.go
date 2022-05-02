@@ -10,7 +10,7 @@ import (
 )
 
 func Sync() (string, bool) {
-	output := "\n\n\n"
+	output := "\n"
 	dataSynced := false
 
 	output = utilities.AppendLabelToOutput(output, "START: SYNC Command")
@@ -30,7 +30,7 @@ func Sync() (string, bool) {
 			output = utilities.AppendToOutput(output, "Nothing to sync.")
 		} else {
 			dataSynced = true
-			output = utilities.AppendToOutput(output, "Synced completed successfully.")
+			output = utilities.AppendToOutput(output, "Sync completed successfully.")
 		}
 	}
 

@@ -10,7 +10,7 @@ import (
 )
 
 func ScrubNew() string {
-	output := "\n\n\n"
+	output := "\n"
 
 	output = utilities.AppendLabelToOutput(output, "START: SCRUB NEW Command")
 

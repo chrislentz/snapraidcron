@@ -20,11 +20,21 @@ func Diff() (string, bool) {
 	cmd := exec.Command("/bin/bash", "snapraid diff")
 	// cmd := exec.Command("/bin/bash", "./diff.sh")
 	stdout, err := cmd.Output()
+	diffCommandOutput, err := cmd.CombinedOutput()
+	diffExitCode := 0
 
 	if err != nil {
-		output = utilities.AppendToOutput(output, fmt.Sprintf("Command Error: %s", err))
-	} else {
-		diffOutput := string(stdout)
+		if exitError, ok := err.(*exec.ExitError); ok {
+			diffExitCode = exitError.ExitCode()
+		}
+
+		if diffExitCode != 2 {
+			output = utilities.AppendToOutput(output, fmt.Sprintf("Command Error: %s", err))
+		}
+	}
+
+	if err == nil || diffExitCode == 2 {
+		diffOutput := string(diffCommandOutput)
 
 		if !strings.Contains(diffOutput, "There are differences!") {
 			output = utilities.AppendToOutput(output, "No differences detected.")
@@ -46,12 +56,12 @@ func Diff() (string, bool) {
 				}
 			}
 
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Change", utilities.AddTrailingSpacesToString(length, equal)))
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Removed", utilities.AddTrailingSpacesToString(length, removed)))
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Added", utilities.AddTrailingSpacesToString(length, added)))
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Moved", utilities.AddTrailingSpacesToString(length, moved)))
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Copied", utilities.AddTrailingSpacesToString(length, copied)))
-			output = utilities.AppendToOutput(output, fmt.Sprintf("%s No Updated", utilities.AddTrailingSpacesToString(length, updated)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Changed", utilities.AddTrailingSpacesToString(length, equal)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Removed", utilities.AddTrailingSpacesToString(length, removed)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Added", utilities.AddTrailingSpacesToString(length, added)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Moved", utilities.AddTrailingSpacesToString(length, moved)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Copied", utilities.AddTrailingSpacesToString(length, copied)))
+			output = utilities.AppendToOutput(output, fmt.Sprintf("%s Updated", utilities.AddTrailingSpacesToString(length, updated)))
 		}
 	}
 

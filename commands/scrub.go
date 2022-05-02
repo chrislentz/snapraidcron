@@ -10,7 +10,7 @@ import (
 )
 
 func Scrub() string {
-	output := "\n\n\n"
+	output := "\n"
 
 	output = utilities.AppendLabelToOutput(output, "START: SCRUB Command")
 
@@ -26,9 +26,9 @@ func Scrub() string {
 		diffOutput := string(stdout)
 
 		if strings.Contains(diffOutput, "Nothing to do") {
-			output = utilities.AppendToOutput(output, "Nothing needs scrubbing.")
+			output = utilities.AppendToOutput(output, "Nothing historical needs scrubbing.")
 		} else {
-			output = utilities.AppendToOutput(output, "Scrub completed successfully.")
+			output = utilities.AppendToOutput(output, "Historical scrub completed successfully.")
 		}
 	}
 

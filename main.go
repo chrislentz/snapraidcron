@@ -21,25 +21,33 @@ func main() {
 	}
 
 	output := ""
+	diffOutput := ""
+	diffDetected := false
+
+	syncOutput := ""
+	dataSynced := false
+
+	scrubNewOutput := ""
+	scrubOutput := ""
 
 	// Run DIFF command
-	diffOutput, diffDetected := commands.Diff()
+	diffOutput, diffDetected = commands.Diff()
 	output = output + diffOutput
 
 	if diffDetected {
 		// Run SYNC command
-		syncOutput, dataSynced := commands.Sync()
+		syncOutput, dataSynced = commands.Sync()
 		output = output + syncOutput
 
 		if dataSynced {
 			// Run SCRUB NEW command
-			scrubNewOutput := commands.ScrubNew()
+			scrubNewOutput = commands.ScrubNew()
 			output = output + scrubNewOutput
 		}
 	}
 
 	// Run SCRUB  command
-	scrubOutput := commands.Scrub()
+	scrubOutput = commands.Scrub()
 	output = output + scrubOutput
 
 	// Print the output
